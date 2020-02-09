@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_flutter_layout/Profile/Settings/notification_widget.dart';
 import 'aboutFitCash_widget.dart';
+import 'AccountSecurity_widget.dart';
 
 class SettingsWidget extends StatelessWidget {
 
