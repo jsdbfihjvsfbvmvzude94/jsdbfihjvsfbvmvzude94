@@ -18,7 +18,9 @@ class SettingsWidget extends StatelessWidget {
             ListTile(
               title: Text("Kontosicherheit"),
               subtitle: Text("Passwort, E-Mail Adresse, Verbundene Konten"),
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AccountSecurityWidget()));
+              },
             ),
             ListTile(
               title: Text("Benachrichtigungen"),
