@@ -21,7 +21,7 @@ class AboutFitCashWidget extends StatelessWidget {
             ),
             ListTile(
               title: Text('Richtlinien zum Schutz des geistigen Eigentums'),
-              onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context) => DataSecurityWidget()));},
+              onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context) => IntellectualPropertyWidget()));},
             ),
           ]
       ),
@@ -55,3 +55,4 @@ class IntellectualPropertyWidget extends StatelessWidget {
     );
   }
 }
+
