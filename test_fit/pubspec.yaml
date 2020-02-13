@@ -23,8 +23,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+
+
+  # The following adds the english_words package, which contains a few thousand of the most used English words plus some utility functions
   english_words: ^3.1.5
   shared_preferences: ^0.5.6
+
 
 dev_dependencies:
   flutter_test:

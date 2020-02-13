@@ -12,51 +12,47 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Startup Name Generator',
       theme: ThemeData(
-        primaryColor: Colors.pink[300],
+        primaryColor: Colors.blue,
+        dividerColor: Colors.black ,
+        //snackBarTheme:
       ),
       home: Scaffold(
-        body:RandomWords(),
+        body: RandomWords(),
       ),
+
+
     );
   }
+
+
 }
 
-class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final Set<WordPair> _saved = Set<WordPair>();
-  final _biggerFont = const TextStyle(fontSize: 18.0);
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Manus Surname Generator'),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
-      ],
-      ),
-      body: _buildSuggestions(),
-    );
-  }
+class RandomWordsState extends State<RandomWords>{
+  //final _suggestions = <WordPair>[];
 
+  final List<WordPair> _suggestions = <WordPair>[];
+  final Set<WordPair> _saved = Set<WordPair>();
+  final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
   void _pushSaved(){
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (BuildContext context) {
+        builder: (BuildContext context){
           final Iterable<ListTile> tiles = _saved.map(
-              (WordPair pair) {
+              (WordPair pair){
                 return ListTile(
                   title: Text(
                     pair.asPascalCase,
                     style: _biggerFont,
                   ),
                 );
-              }
+              },
           );
           final List<Widget> divided = ListTile
           .divideTiles(
-            context: context,
-            tiles: tiles,
+              context: context,
+              tiles: tiles,
           )
           .toList();
 
@@ -64,70 +60,90 @@ class RandomWordsState extends State<RandomWords> {
             appBar: AppBar(
               title: Text('Saved Suggestions'),
             ),
-            body: ListView(children: divided,),
+            body: ListView(children: divided,)
           );
-        },
-      ),
+        }
+      )
     );
   }
 
-  Widget _buildSuggestions() {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Startup Name Generator'),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+        ],
+      ),
+      body: _buildSuggestions(),
+    );
+    //final wordPair = WordPair.random();
+    //return Text(wordPair.asPascalCase);
+  }
+  Widget _buildSuggestions(){
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, i) {
         if (i.isOdd) return Divider();
 
-        final index = i ~/ 2;
-        if (index <= _suggestions.length) {
+        final index = i ~/2;
+        if (index >= _suggestions.length){
           _suggestions.addAll(generateWordPairs().take(10));
         }
         return _buildRow(_suggestions[index]);
       },
+
     );
   }
 
-  Widget _buildRow(WordPair pair) {
+  Widget _buildRow(WordPair pair){
     final bool alreadySaved = _saved.contains(pair);
     return ListTile(
       title: Text(
         pair.asPascalCase,
         style: _biggerFont,
       ),
-      trailing: Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.pink[300] : null,
-      ),
-      onTap: () {
+    trailing: Icon(
+      alreadySaved ? Icons.favorite : Icons.favorite_border,
+      color: alreadySaved ? Colors.red : null,
+    ),
+      onTap: (){
         setState(() {
           if (alreadySaved) {
             _saved.remove(pair);
-            final snackBar = SnackBar(
-                content: Text('You removed ' + pair.asPascalCase + ' to your favorites.'),
-                action: SnackBarAction(
+            final snackbar = SnackBar(
+              content: Text('You have removed ' + pair + ' from your favourites.'),
+              action: SnackBarAction(
                   label: 'Undo',
                   onPressed: (){
-                    //TODO undo -> remove selection and heart
+                    //TODO: UNDO programming
                   },
-                )
+              ),
             );
+<<<<<<< HEAD
             Scaffold.of(context).showSnackBar(snackBar);
          } else {
+=======
+          } else {
+>>>>>>> 588215900659af67fac1b4b3d4c2e46403d3b31b
             _saved.add(pair);
-            final snackBar = SnackBar(
-                content: Text('You added ' + pair.asPascalCase + ' to your favorites.'),
-                action: SnackBarAction(
-                  label: 'Undo',
-                  onPressed: (){
-                    //TODO undo -> remove selection and heart
-                  },
-                )
+            final snackbar = SnackBar(
+              content: Text('You have added ' + pair + ' to your favoruites.'),
+              action: SnackBarAction(
+                label: 'Undo',
+                onPressed: (){
+                  //TODO programmieren!
+                },
+              ),
             );
-            Scaffold.of(context).showSnackBar(snackBar);
-          }
 
+          }
+          Scaffold.of(context).showSnackBar(snackbar);
         });
 
-      },
+        },
     );
   }
 }
