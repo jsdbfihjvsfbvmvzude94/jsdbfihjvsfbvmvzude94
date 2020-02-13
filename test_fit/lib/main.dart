@@ -111,7 +111,7 @@ class RandomWordsState extends State<RandomWords> {
                 )
             );
             Scaffold.of(context).showSnackBar(snackBar);
-          } else {
+         } else {
             _saved.add(pair);
             final snackBar = SnackBar(
                 content: Text('You added ' + pair.asPascalCase + ' to your favorites.'),

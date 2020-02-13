@@ -16,7 +16,7 @@ class ProfileWidget extends StatelessWidget {
             },
           )
         ],
-      )
+      ),
     );
   }
 }
