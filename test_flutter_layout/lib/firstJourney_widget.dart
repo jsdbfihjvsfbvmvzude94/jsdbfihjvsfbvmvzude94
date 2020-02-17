@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class firstJourneyWidget extends StatelessWidget {
 
@@ -32,6 +33,7 @@ class firstJourneyWidget extends StatelessWidget {
                       child: Text("Skip"),
                       onPressed: (){
                         //TODO Hier skippen
+                        Navigator.pop(context);
                       },
                     ),
                     RaisedButton(
@@ -92,7 +94,9 @@ class journeyWidgetOne extends StatelessWidget {
                   RaisedButton(
                     child: Text("Skip"),
                     onPressed: (){
-                      Navigator.pop(context);
+                      for(int i=0; i<2; i++){
+                        Navigator.pop(context);
+                      }
                     },
                   ),
                   RaisedButton(
@@ -132,6 +136,11 @@ class _JourneyWidgetTwoState extends State<StatefulWidget> {
     });
   }
 
+  setPrefs(String val) async{
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('val1', val);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -156,6 +165,7 @@ class _JourneyWidgetTwoState extends State<StatefulWidget> {
                 title: Text("Schüler"),
                 onChanged: (val) {
                   setSelectedRadioTile(val);
+                  setPrefs("Schüler");
                 },
                 activeColor: Colors.black,
                 selected: true,
@@ -166,6 +176,7 @@ class _JourneyWidgetTwoState extends State<StatefulWidget> {
                 title: Text("Student"),
                 onChanged: (val) {
                   setSelectedRadioTile(val);
+                  setPrefs("Student");
                 },
                 activeColor: Colors.black,
                 selected: false,
@@ -176,6 +187,7 @@ class _JourneyWidgetTwoState extends State<StatefulWidget> {
                 title: Text("Angestellter"),
                 onChanged: (val) {
                   setSelectedRadioTile(val);
+                  setPrefs("Angestellter");
                 },
                 activeColor: Colors.black,
                 selected: false,
@@ -186,6 +198,7 @@ class _JourneyWidgetTwoState extends State<StatefulWidget> {
                 title: Text("Selbstständiger"),
                 onChanged: (val) {
                   setSelectedRadioTile(val);
+                  setPrefs("Selbstständiger");
                 },
                 activeColor: Colors.black,
                 selected: false,
@@ -196,6 +209,7 @@ class _JourneyWidgetTwoState extends State<StatefulWidget> {
                 title: Text("Arbeitssuchender"),
                 onChanged: (val) {
                   setSelectedRadioTile(val);
+                  setPrefs("Arbeitssuchender");
                 },
                 activeColor: Colors.black,
                 selected: false,
@@ -206,6 +220,7 @@ class _JourneyWidgetTwoState extends State<StatefulWidget> {
                 title: Text("Anderes"),
                 onChanged: (val) {
                   setSelectedRadioTile(val);
+                  setPrefs("Anderes");
                 },
                 activeColor: Colors.black,
                 selected: false,
@@ -216,12 +231,15 @@ class _JourneyWidgetTwoState extends State<StatefulWidget> {
                   RaisedButton(
                     child: Text("Skip"),
                     onPressed: (){
-                      Navigator.pop(context);
+                      for(int i=0; i<3; i++){
+                        Navigator.pop(context);
+                      }
                     },
                   ),
                   RaisedButton(
                     child: Text("Weiter"),
                     onPressed: (){
+
                       Navigator.push(context, MaterialPageRoute(builder: (context) => journeyWidgetThree()));
                     },
                   )
@@ -330,7 +348,9 @@ class _JourneyWidgetThreeState extends State<StatefulWidget> {
                   RaisedButton(
                     child: Text("Skip"),
                     onPressed: (){
-                      Navigator.pop(context);
+                      for(int i=0; i<4; i++){
+                        Navigator.pop(context);
+                      }
                     },
                   ),
                   RaisedButton(
@@ -454,7 +474,9 @@ class _JourneyWidgetFourState extends State<StatefulWidget> {
                   RaisedButton(
                     child: Text("Skip"),
                     onPressed: (){
-                      Navigator.pop(context);
+                      for(int i=0; i<5; i++){
+                        Navigator.pop(context);
+                      }
                     },
                   ),
                   RaisedButton(
