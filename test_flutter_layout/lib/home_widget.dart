@@ -12,6 +12,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+
+  Locale myLocale = Localizations.localeOf(context);
+//  Widget Localizations(){
+//
+//  }
+
+
+
   int _currentIndex = 2;              // TODO: Frage Niki: wieso "2" ??
   final List<Widget> _children = [
     PlaceholderWidget(Colors.yellow),
