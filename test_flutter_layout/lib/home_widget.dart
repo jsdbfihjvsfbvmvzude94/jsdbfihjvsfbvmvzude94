@@ -12,13 +12,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  int _currentIndex = 2;
+  int _currentIndex = 2;              // TODO: Frage Niki: wieso "2" ??
   final List<Widget> _children = [
-    PlaceholderWidget(Colors.white),
+    PlaceholderWidget(Colors.yellow),
     PlaceholderWidget(Colors.deepOrange),
     CoursesWidget(Colors.green),
     PlaceholderWidget(Colors.blue),
-    ProfileWidget()
+    ProfileWidget(),
+    PlaceholderWidget(Colors.purpleAccent)
   ];
   @override
   Widget build(BuildContext context) {
@@ -49,10 +50,18 @@ class _HomeState extends State<Home> {
               icon: Icon(Icons.person),
               title: Text('Profil')
           )
+
+          ,
+          new BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text('Test')
+          )
         ],
       ),
     );
   }
+
+
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
